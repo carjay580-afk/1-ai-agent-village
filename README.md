@@ -43,3 +43,4 @@ tests/DBT-001/DBT-001_transaction_rollback_v1.1.sql
 tests/DBT-001/compose.dbt001.yaml
 tests/DBT-001/run_DBT-001-v1.1.sh
 tests/DBT-001/DBT-001-v1.1-PATCH-NOTES.md
+git diff --cached
