@@ -34,4 +34,12 @@ test(db): harden DBT-001 integrity checks to v1.1
 git status
 git diff --cached
 git commit -m "test(db): harden DBT-001 integrity checks to v1.1"
-git status
+git statusgit status --short
+git diff --cached --name-status
+
+tests/DBT-001/DBT-001_fixture_v1.1.sql
+tests/DBT-001/DBT-001_assertions_v1.1.sql
+tests/DBT-001/DBT-001_transaction_rollback_v1.1.sql
+tests/DBT-001/compose.dbt001.yaml
+tests/DBT-001/run_DBT-001-v1.1.sh
+tests/DBT-001/DBT-001-v1.1-PATCH-NOTES.md
