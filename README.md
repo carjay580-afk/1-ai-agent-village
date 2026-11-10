@@ -30,3 +30,4 @@ See LICENSE for the proprietary notice and restrictions.
 
 No open-source licence is granted for this repository.
 See LICENSE for the proprietary notice and restrictions.
+test(db): harden DBT-001 integrity checks to v1.1
