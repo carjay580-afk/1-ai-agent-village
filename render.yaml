@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: ai-agent-village
+    runtime: node
+    plan: starter
+    region: ohio
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VILLAGE_REGION
+        value: ca-central-1
+      - key: ENABLE_AUTOMATION_WORKER
+        value: "true"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ai-agent-village-db
+          property: connectionString
+
+databases:
+  - name: ai-agent-village-db
+    databaseName: ai_agent_village
+    user: village
+    plan: starter
+    postgresMajorVersion: "16"

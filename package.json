@@ -1,0 +1,46 @@
+{
+  "name": "ai-agent-village",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AI Agent Village — All-in-One Canadian AI Commander & Specialist Multi-Agent Studio Platform",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "tsx server/index.ts",
+    "build:client": "vite build",
+    "build:server": "node scripts/build-server.mjs",
+    "build": "npm run build:client && npm run build:server",
+    "start": "NODE_ENV=production node dist/server/index.js",
+    "db:migrate": "node dist/server/migrate.js",
+    "verify:prod": "node scripts/smoke-check.mjs",
+    "test:dbt001": "bash tests/DBT-001/village-test.sh",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "compression": "^1.8.1",
+    "express": "^5.1.0",
+    "lucide-react": "^0.511.0",
+    "pg": "^8.16.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.7",
+    "@types/compression": "^1.8.1",
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.21",
+    "@types/pg": "^8.15.4",
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.0",
+    "tailwindcss": "^4.1.7",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.1.4"
+  }
+}

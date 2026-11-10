@@ -1,0 +1,38 @@
+# Fly.io Turnkey Configuration — Toronto, Canada (yyz) 🍁
+app = "ai-agent-village"
+primary_region = "yyz"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  HOST = "0.0.0.0"
+  PORT = "3000"
+  VILLAGE_REGION = "ca-central-1"
+  VILLAGE_DB_PATH = "/data/village-pgdata"
+  ENABLE_AUTOMATION_WORKER = "true"
+
+[[mounts]]
+  source = "village_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "suspend"
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+  [[http_service.checks]]
+    interval = "20s"
+    timeout = "5s"
+    grace_period = "15s"
+    method = "GET"
+    path = "/healthz"
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1

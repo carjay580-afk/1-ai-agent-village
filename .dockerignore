@@ -1,0 +1,12 @@
+node_modules
+dist
+.data
+.git
+.github
+.vite
+coverage
+*.log
+.env
+.env.*
+!.env.example
+tests/DBT-001/DBT-001-last-run.log

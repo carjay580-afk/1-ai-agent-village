@@ -1,0 +1,16 @@
+name: ai-agent-village-dbt001-local
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: village_test
+      POSTGRES_PASSWORD: village_test_ephemeral_pw
+      POSTGRES_DB: ai_agent_village_dbt001
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U village_test -d ai_agent_village_dbt001"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+    tmpfs:
+      - /var/lib/postgresql/data

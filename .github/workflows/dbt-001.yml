@@ -1,0 +1,33 @@
+name: DBT-001 Integrity Suite
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  dbt-001:
+    name: Verify PostgreSQL Schema & DBT-001 v1.1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Execute DBT-001 v1.1 Canonical Suite
+        run: ./tests/DBT-001/village-test.sh
+
+      - name: Upload DBT-001 Diagnostic Log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dbt-001-last-run-log
+          path: tests/DBT-001/DBT-001-last-run.log

@@ -1,0 +1,22 @@
+# Dependencies & build artifacts
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+
+# Local runtime state & logs
+.data/
+*.log
+tests/DBT-001/DBT-001-last-run.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
